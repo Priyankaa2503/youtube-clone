@@ -27,7 +27,6 @@ const Container = styled.div`
   font-size: 14px;
   position: sticky;
   top: 0;
-  padding-bottom: 70px;
 `;
 const Wrapper = styled.div`
   padding: 18px 26px;
@@ -85,6 +84,7 @@ const Title = styled.h2`
 
 const Menu = ({ darkMode, setDarkMode }) => {
   const { currentUser } = useSelector((state) => state.user);
+
   return (
     <Container>
       <Wrapper>
@@ -123,7 +123,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
           History
         </Item>
         <Hr />
-        {
+        {!currentUser &&
           <>
             <Login>
               Sign in to like videos, comment, and subscribe.
