@@ -5,7 +5,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import Upload from "./Upload";
+import Upload from "./Upload";
 
 const Container = styled.div`
   position: sticky;
@@ -35,6 +35,7 @@ const Search = styled.div`
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Input = styled.input`
@@ -77,11 +78,12 @@ const Navbar = () => {
   const [q, setQ] = useState("");
   const { currentUser } = useSelector((state) => state.user);
   return (
+    <>
     <Container>
       <Wrapper>
         <Search>
-          <Input placeholder="Search" />
-          <SearchOutlinedIcon />
+          <Input  placeholder="Search" onChange={(e)=>setQ(e.target.value)}/>
+          <SearchOutlinedIcon onClick={()=>navigate(`/search?q=${q}`)} />
         </Search>
         {currentUser ?(
           <User>
@@ -98,6 +100,8 @@ const Navbar = () => {
         </Link>)}
       </Wrapper>
     </Container>
+    {open && <Upload setOpen={setOpen}/>}
+    </>
   );
 };
 

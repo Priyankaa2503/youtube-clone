@@ -163,7 +163,7 @@ const Video = () => {
     <Container>
       <Content>
         <VideoWrapper>
-         <VideoFrame src={currentVideo.videoUrl}/>
+         <VideoFrame src={currentVideo.videoUrl} controls/>
 
         </VideoWrapper>
         <Title>{currentVideo.title}</Title>
@@ -207,24 +207,12 @@ const Video = () => {
           </ChannelInfo>
           <Subscribe onClick={handleSub}>{currentUser.subscribedUsers?.includes(channel._id)?"SUBSCRIBED":"SUBSCRIBE"}</Subscribe>
         </Channel>
-        <Hr />
-        <Comments videoId={currentVideo._id}/>
+
+      <Hr />
+        <Comments videoId={currentVideo._id} />
       </Content>
-      {/* <Recommendation>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-        <Card type="sm"/>
-      </Recommendation> */}
+      <Recommendation tags={currentVideo.tags} />
+    
     </Container>
   );
 };
